@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 10:35:06 by chdonnat          #+#    #+#             */
-/*   Updated: 2025/01/10 16:10:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:24:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // avec la libft:
 // gcc -o progtest test.c -Lmlx -Imlx -lmlx -Llibft -Ilibft -lft -lX11 -lXext -lm
 
+#include "mlx/mlx_int.h"
 #include "mlx/mlx.h"
-#include <stdarg.h>
-#include "../libft/includes/libft.h"
+#include "libft/headers/libft_H/libft.h"
 
 
 typedef struct s_img
@@ -150,9 +150,8 @@ int	deal_key(int key, t_gen *gen)
 	// Afficher l'image dans la fenêtre
 	mlx_put_image_to_window(gen->win->mlx_p, gen->win->win_p, gen->img->img_p, 0, 0);
 	// Déplacer les coordonnées pour le prochain pixel
-	x += 10;
-	y += 10;
-
+	x += 1;
+	y += 1;
 	return (0);
 }
 
