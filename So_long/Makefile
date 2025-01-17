@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/16 17:43:56 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/17 18:20:30 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ OBJ_SRC =			$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 
 UTILS =				\
 					$(UTILS_DIR)/error_manager.c $(UTILS_DIR)/utils.c \
-					$(UTILS_DIR)/map_manager.c
+					$(UTILS_DIR)/map_manager.c $(UTILS_DIR)/free_manager.c \
+					$(UTILS_DIR)/allocation_manager.c
 
 OBJ_UTILS =			$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
 

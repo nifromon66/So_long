@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   allocation_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 13:52:03 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/17 18:03:06 by nifromon         ###   ########.fr       */
+/*   Created: 2025/01/17 18:05:06 by nifromon          #+#    #+#             */
+/*   Updated: 2025/01/17 18:07:34 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-t_map	*g_map;
-
-int	main(int argc, char *argv[])
+int	my_realloc(void **ptr, int old_size, int new_size)
 {
-	if (argc != 2)
-		error_manager("Incorrect number of arguments", -1);
-	map_init();
-	g_map->file_len = ft_strlen(argv[1]);
-	g_map->file = argv[1];
-	map_manager();
-	free_map();
+	void *new_ptr;
+	int min_size;
+
+	if (!ptr)
+		return (-1);
+	if (new_size == 0)
+	{
+		free(*ptr);
+		*ptr = NULL;
+		return (0);
+	}
+	new_ptr = malloc(new_size);
+	if (!new_ptr)
+		return (-1);
+	if (*ptr != NULL)
+	{
+		if (old_size < new_size)
+			min_size = old_size;
+		else
+			min_size = new_size;
+		ft_memcpy(new_ptr, *ptr, min_size);
+		free(*ptr);
+	}
+	*ptr = new_ptr;
 	return (0);
 }
