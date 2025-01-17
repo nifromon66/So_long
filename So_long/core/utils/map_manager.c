@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:44:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/17 18:22:21 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:41:07 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	map_init(void)
 	g_map->map = (char **)malloc(sizeof(char *));
 	if (!g_map->map)
 		error_manager("Memory allocation error", -1);
+	g_map->map[0] = NULL;
 	g_map->file = NULL;
 	g_map->height = 0;
 	g_map->width = 0;
