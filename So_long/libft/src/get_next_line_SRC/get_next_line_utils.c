@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:40:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/06 17:24:29 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/17 01:13:50 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
