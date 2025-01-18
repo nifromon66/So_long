@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:04:42 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 17:49:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:15:53 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	free_manager(char *label, ...)
 	va_end(arg);
 }
 
-void free_map_data(va_list arg)
+void	free_map_data(va_list arg)
 {
-	t_map **map_data;
+	t_map	**map_data;
 
 	map_data = va_arg(arg, t_map **);
 	if (*map_data)
@@ -42,7 +42,7 @@ void free_map_data(va_list arg)
 
 void	free_map(t_map **map_data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((*map_data)->map)
@@ -63,7 +63,7 @@ void	free_map(t_map **map_data)
 
 void	free_visited(t_map **map_data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if ((*map_data)->visited)

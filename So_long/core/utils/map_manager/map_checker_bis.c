@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker_bis.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:26:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 17:56:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:12:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	map_check_way(int x, int y, t_map **map_data)
 	if ((*map_data)->map[y][x] == 'E')
 		return (1);
 	(*map_data)->visited[y][x] = 1;
-	i = 0;
+	i = -1;
 	while (++i != 4)
 	{
 		nx = x + (*map_data)->dx[i];
 		ny = y + (*map_data)->dy[i];
-		if (map_is_valid_pos(nx, ny, map_data)
+		if ((map_is_valid_pos(nx, ny, map_data) == 1)
 			&& !((*map_data)->visited[ny][nx])
 			&& ((*map_data)->map[ny][nx] == '0'
 			|| (*map_data)->map[ny][nx] == 'C'
@@ -41,12 +41,16 @@ int	map_check_way(int x, int y, t_map **map_data)
 
 int	map_is_valid_pos(int x, int y, t_map **map_data)
 {
+	int	valid;
 	int	w;
 	int	h;
 
 	w = (*map_data)->w;
 	h = (*map_data)->h;
-	return ((x >= 0 && x < w) && (y >= 0 && y < h));
+	valid = 0;
+	if ((x >= 0 && x < w) && (y >= 0 && y < h))
+		valid = 1;
+	return (valid);
 }
 
 void	map_find_spawn(t_map **map_data)
@@ -65,8 +69,8 @@ void	map_find_spawn(t_map **map_data)
 			c = (*map_data)->map[j][i];
 			if (c == 'P')
 			{
-				(*map_data)->pos_p[0] = j;
-				(*map_data)->pos_p[1] = i;
+				(*map_data)->pos_p[0] = i;
+				(*map_data)->pos_p[1] = j;
 			}
 			i++;
 		}
@@ -90,8 +94,8 @@ void	map_find_exit(t_map **map_data)
 			c = (*map_data)->map[j][i];
 			if (c == 'E')
 			{
-				(*map_data)->pos_e[0] = j;
-				(*map_data)->pos_e[1] = i;
+				(*map_data)->pos_e[0] = i;
+				(*map_data)->pos_e[1] = j;
 			}
 			i++;
 		}

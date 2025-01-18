@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 17:54:08 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:06:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	map_check_rectangle(t_map **map_data)
 	i = 0;
 	while (i != (*map_data)->h)
 	{
-		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t) (*map_data)->w)
+		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t)(*map_data)->w)
 			error_manager("Map has irregular w", -1, map_data);
 		i++;
 	}

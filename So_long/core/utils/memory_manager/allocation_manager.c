@@ -6,16 +6,16 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 18:05:06 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 00:31:14 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 20:14:35 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/so_long.h"
 
-int my_realloc(void **ptr, int old_size, int new_size)
+int	my_realloc(void **ptr, int old_size, int new_size)
 {
-	void *new_ptr;
-	int min_size;
+	void	*new_ptr;
+	int		min_size;
 
 	if (!ptr)
 		return (-1);
@@ -40,5 +40,3 @@ int my_realloc(void **ptr, int old_size, int new_size)
 	*ptr = new_ptr;
 	return (0);
 }
-
-
