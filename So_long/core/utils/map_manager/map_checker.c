@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 03:08:15 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 17:54:08 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ void	map_check_rectangle(t_map **map_data)
 	int	i;
 
 	i = 0;
-    (*map_data)->width = (int) ft_strlen((*map_data)->map[0]) - 1;
-	if ((*map_data)->width == (*map_data)->height)
-		error_manager("Map is a square", -1, map_data);
-	while (i != (*map_data)->height)
+	while (i != (*map_data)->h)
 	{
-		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t) (*map_data)->width)
-			error_manager("Map has irregular width", -1, map_data);
+		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t) (*map_data)->w)
+			error_manager("Map has irregular w", -1, map_data);
 		i++;
 	}
 }
@@ -34,11 +31,11 @@ void	map_check_enclosement(t_map **map_data)
 	int	w;
 	int	i;
 	int	j;
-	
+
 	j = 0;
-	h = (*map_data)->height;
-	w = (*map_data)->width;
-	while (j != (*map_data)->height)
+	h = (*map_data)->h;
+	w = (*map_data)->w;
+	while (j != (*map_data)->h)
 	{
 		i = 0;
 		while (i != w)
@@ -59,12 +56,12 @@ void	map_check_characters(t_map **map_data)
 	int			i;
 	int			j;
 
-	j = 0;
+	j = -1;
 	c = 0;
-	while (j != (*map_data)->height)
+	while (++j != (*map_data)->h)
 	{
-		i = 0;
-		while (i != (*map_data)->width)
+		i = -1;
+		while (++i != (*map_data)->w)
 		{
 			c = (*map_data)->map[j][i];
 			if (c == 'P')
@@ -73,11 +70,11 @@ void	map_check_characters(t_map **map_data)
 				(*map_data)->count_c++;
 			else if (c == 'E')
 				(*map_data)->count_e++;
-			else if (c != '1' && c != '0')
+			else if (c == '0')
+				(*map_data)->count_zero++;
+			else if (c != '1')
 				error_manager("Map has an invalid character", -1, map_data);
-			i++;
 		}
-		j++;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:16:23 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 01:15:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 13:43:41 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_manager(char *error, int level, ...)
 	map_data = va_arg(arg, t_map **);
 	if (level == -1)
 	{
-		ft_printf("\n%sx⸑x [%s %s %s] x⸑x%s\n", RED, RESET, error, RED, RESET);
+		ft_printf("\n%sx⸑x [%s %s %s] x⸑x%s\n\n", RED, RESET, error, RED, RESET);
 		if ((*map_data)->fd != -1)
 			close((*map_data)->fd);
 		free_manager("all", map_data);

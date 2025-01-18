@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/18 00:37:09 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/18 14:26:57 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ UTILS =				\
 					$(UTILS_DIR)/error_manager/error_manager.c \
 					$(UTILS_DIR)/map_manager/map_manager.c \
 					$(UTILS_DIR)/map_manager/map_checker.c \
+					$(UTILS_DIR)/map_manager/map_checker_bis.c \
 					$(UTILS_DIR)/memory_manager/allocation_manager.c \
 					$(UTILS_DIR)/memory_manager/free_manager.c
 
