@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/17 18:20:30 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/18 00:37:09 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,9 +56,11 @@ SRC =				\
 OBJ_SRC =			$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 
 UTILS =				\
-					$(UTILS_DIR)/error_manager.c $(UTILS_DIR)/utils.c \
-					$(UTILS_DIR)/map_manager.c $(UTILS_DIR)/free_manager.c \
-					$(UTILS_DIR)/allocation_manager.c
+					$(UTILS_DIR)/error_manager/error_manager.c \
+					$(UTILS_DIR)/map_manager/map_manager.c \
+					$(UTILS_DIR)/map_manager/map_checker.c \
+					$(UTILS_DIR)/memory_manager/allocation_manager.c \
+					$(UTILS_DIR)/memory_manager/free_manager.c
 
 OBJ_UTILS =			$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
 
@@ -88,6 +90,9 @@ $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 					@mkdir -p $(OBJ_DIR)
 					@mkdir -p $(OBJ_UTILS_DIR)
+					@mkdir -p $(OBJ_UTILS_DIR)/error_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/memory_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/map_manager
 					$(CC) -s -c $(CFLAGS) $(INCLUDES) $< -o $@
 
 clean:

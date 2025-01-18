@@ -3,22 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   error_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:16:23 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/17 18:13:20 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 01:15:37 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
+#include "../../headers/so_long.h"
 
-void	error_manager(char *error, int level)
+void	error_manager(char *error, int level, ...)
 {
+	va_list	arg;
+	t_map	**map_data;
+
+	va_start(arg, level);
+	map_data = va_arg(arg, t_map **);
 	if (level == -1)
 	{
-		ft_printf("%sERROR:[%s%s%s]%s\n", RED, RESET, error, RED, RESET);
-		free_manager("all");
+		ft_printf("\n%sx⸑x [%s %s %s] x⸑x%s\n", RED, RESET, error, RED, RESET);
+		if ((*map_data)->fd != -1)
+			close((*map_data)->fd);
+		free_manager("all", map_data);
+		va_end(arg);
 		exit(0);
 	}
+	va_end(arg);
 }
 

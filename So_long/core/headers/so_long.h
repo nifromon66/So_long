@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:06:58 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/17 18:21:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/18 02:53:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,30 @@ typedef struct s_map
 	int		width;
 	int		height;
 	int		file_len;
+	int		count_p;
+	int		count_c;
+	int		count_e;
 }			t_map;
 
-// Global variable
-extern t_map *g_map;
-
 // Functions
-// allocation_manager.c
+// memory_manager
+	// allocation_manager.c
 int		my_realloc(void **ptr, int old_size, int new_size);
-// error_manager.c
-void	error_manager(char *error, int level);
-// map_manager.c
-void	map_init(void);
-void	map_manager(void);
-void	map_check_format(void);
-// free_manager.c
-void	free_map(void);
-void	free_manager(char *label);
-
+	// free_manager.c
+void	free_map(va_list arg);
+void	free_manager(char *label, ...);
+// error_manager
+	// error_manager.c
+void	error_manager(char *error, int level, ...);
+// map_manager
+	// map_manager.c
+void	map_init(t_map **map_data);
+void	map_manager(t_map **map_data);
+void	map_valid_ext(t_map **map_data);
+void	map_read(t_map **map_data);
+	// map_checker.c
+void    map_check_rectangle(t_map **map_data);
+void	map_check_enclosement(t_map **map_data);
+void	map_check_characters(t_map **map_data);
+void	map_check_elements(t_map **map_data);
 #endif
