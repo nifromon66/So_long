@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/18 14:26:57 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/20 02:04:41 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,13 @@ NAME =				so_long
 # Compilation
 CC =				@gcc
 CFLAGS =			-Wall -Werror -Wextra -L $(LIBFT_DIR)
-MFLAGS =			-L $(MLX_DIR) -lm -lmlx -lft -lXext -lX11
-INCLUDES =			-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers -I $(MLX_DIR)/
+MFLAGS = 			-L $(MLX_DIR) -L /usr/include/X11/ \
+					-L /usr/lib/x86_64-linux-gnu/ \
+					-lmlx -lXext -lX11 -lXrandr -lm -lbsd -lXfixes
+
+INCLUDES = 			-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers/ -I $(MLX_DIR)/ \
+					-I /usr/include/X11/ -I /usr/include/X11/extensions/ \
+					-I /usr/lib/x86_64-linux-gnu/
 
 # Directories
 SRC_DIR =			core/src
@@ -60,8 +65,14 @@ UTILS =				\
 					$(UTILS_DIR)/map_manager/map_manager.c \
 					$(UTILS_DIR)/map_manager/map_checker.c \
 					$(UTILS_DIR)/map_manager/map_checker_bis.c \
+					$(UTILS_DIR)/mlx_manager/mlx_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_init_data.c \
+					$(UTILS_DIR)/mlx_manager/mlx_resize_img.c \
+					$(UTILS_DIR)/mlx_manager/mlx_utils.c \
 					$(UTILS_DIR)/memory_manager/allocation_manager.c \
-					$(UTILS_DIR)/memory_manager/free_manager.c
+					$(UTILS_DIR)/memory_manager/free_manager.c \
+					$(UTILS_DIR)/memory_manager/free_map_data.c \
+					$(UTILS_DIR)/memory_manager/free_mlx_data.c
 
 OBJ_UTILS =			$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
 
@@ -79,14 +90,14 @@ $(MLX):
 					@make -s -C $(MLX_DIR) all >/dev/null 2>&1
 					@echo "$(GREEN)o()xxxx[]::::::::::::::::::>	Successfully built MinilibX !$(RESET)"
 
-$(NAME):			$(LIBFT) $(MLX) $(OBJ_SRC) $(OBJ_UTILS)
-					$(CC) $(CFLAGS) $(MFLAGS) $(INCLUDES) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) -o $(NAME)
+$(NAME): 			$(LIBFT) $(MLX) $(OBJ_SRC) $(OBJ_UTILS)
+					$(CC) $(OBJ_SRC) $(OBJ_UTILS) $(LIBFT) $(MLX) -o $(NAME) $(CFLAGS) $(INCLUDES) $(MFLAGS)
 					@echo "\n\n$(GREEN)[-----]ʕ·͡ᴥ·ʔ SUCCESSFULLY COMPILED SO_LONG...ʕ·͡ᴥ·ʔ[-----]$(RESET)\n\n"
 
 $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 					@mkdir -p $(OBJ_DIR)
 					@mkdir -p $(OBJ_SRC_DIR)
-					$(CC) -s -c $(CFLAGS) $(INCLUDES) $< -o $@
+					$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
 
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 					@mkdir -p $(OBJ_DIR)
@@ -94,7 +105,8 @@ $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 					@mkdir -p $(OBJ_UTILS_DIR)/error_manager
 					@mkdir -p $(OBJ_UTILS_DIR)/memory_manager
 					@mkdir -p $(OBJ_UTILS_DIR)/map_manager
-					$(CC) -s -c $(CFLAGS) $(INCLUDES) $< -o $@
+					@mkdir -p $(OBJ_UTILS_DIR)/mlx_manager
+					$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
 
 clean:
 					@echo "$(YELLOW)[-------------]CLEANING ᕦ(òᴥó)ᕥ SO_LONG...[-------------]$(RESET)\n\n"

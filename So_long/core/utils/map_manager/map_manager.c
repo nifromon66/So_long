@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:44:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 20:09:35 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:28:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ void	map_manager(t_map **map_data)
 	start_y = (*map_data)->pos_p[1];
 	if (map_check_way(start_x, start_y, map_data) == 0)
 		error_manager("No valid way to the exit", -1, map_data);
-	close((*map_data)->fd);
-	(*map_data)->fd = -1;
 }
 
 void	map_valid_ext(t_map **map_data)

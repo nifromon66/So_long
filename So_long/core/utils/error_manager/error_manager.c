@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 15:16:23 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 20:16:36 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/19 13:17:25 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	error_manager(char *error, int level, ...)
 	if (level == -1)
 	{
 		ft_printf("\n%sx⸑x [%s%s%s] x⸑x%s\n\n", RED, RESET, error, RED, RESET);
-		if ((*map_data)->fd != -1)
-			close((*map_data)->fd);
 		free_manager("all", map_data);
 		va_end(arg);
 		exit(0);

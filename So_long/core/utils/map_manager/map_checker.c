@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/18 20:06:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:27:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	map_check_enclosement(t_map **map_data)
 	j = 0;
 	h = (*map_data)->h;
 	w = (*map_data)->w;
-	while (j != (*map_data)->h)
+	while (j != h)
 	{
 		i = 0;
 		while (i != w)
