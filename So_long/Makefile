@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/20 02:04:41 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/21 01:12:33 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,10 @@ UTILS =				\
 					$(UTILS_DIR)/map_manager/map_checker_bis.c \
 					$(UTILS_DIR)/mlx_manager/mlx_manager.c \
 					$(UTILS_DIR)/mlx_manager/mlx_init_data.c \
-					$(UTILS_DIR)/mlx_manager/mlx_resize_img.c \
-					$(UTILS_DIR)/mlx_manager/mlx_utils.c \
+					$(UTILS_DIR)/mlx_manager/mlx_render_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_mouv_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_mouv_utils.c \
+					$(UTILS_DIR)/mlx_manager/mlx_init_data_utils.c \
 					$(UTILS_DIR)/memory_manager/allocation_manager.c \
 					$(UTILS_DIR)/memory_manager/free_manager.c \
 					$(UTILS_DIR)/memory_manager/free_map_data.c \

@@ -6,20 +6,18 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:06:27 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/20 00:08:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:29:36 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../headers/so_long.h"
 
-int  calculate_scale(t_mlx **mlx, t_map **map_data)
+void  calculate_scale_x(t_mlx **mlx, t_map **map_data)
 {
-    int a;
-    int b;
+    (*mlx)->win_x = 192 * (*map_data)->w;
+}
 
-    a = ((*mlx)->win_x / (*map_data)->w);
-    b = ((*mlx)->win_y / (*map_data)->h);
-    if (a < b)
-        return (a);
-    return (b);
+void  calculate_scale_y(t_mlx **mlx, t_map **map_data)
+{
+    (*mlx)->win_y = 192 * (*map_data)->h;
 }

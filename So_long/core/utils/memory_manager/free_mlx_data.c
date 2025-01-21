@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 20:50:12 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/20 02:46:48 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:30:39 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	free_img(t_mlx **mlx)
 		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->wall_img);
 		(*mlx)->wall_img = NULL;
 	}
-	if ((*mlx)->space_img)
+	if ((*mlx)->floor_img)
 	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->space_img);
-		(*mlx)->space_img = NULL;
+		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->floor_img);
+		(*mlx)->floor_img = NULL;
 	}
 	if ((*mlx)->collect_img)
 	{

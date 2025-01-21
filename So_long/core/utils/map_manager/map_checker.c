@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/19 16:27:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:51:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	map_check_characters(t_map **map_data)
 			if (c == 'P')
 				(*map_data)->count_p++;
 			else if (c == 'C')
-				(*map_data)->count_c++;
+				(*map_data)->cnt_c++;
 			else if (c == 'E')
 				(*map_data)->count_e++;
 			else if (c == '0')
@@ -82,7 +82,7 @@ void	map_check_elements(t_map **map_data)
 {
 	if ((*map_data)->count_p != 1)
 		error_manager("Map has invalid number of spawn", -1, map_data);
-	if (!((*map_data)->count_c >= 1))
+	if (!((*map_data)->cnt_c >= 1))
 		error_manager("Map has invalid number of collectibles", -1, map_data);
 	if ((*map_data)->count_e != 1)
 		error_manager("Map has invalid number of exit", -1, map_data);

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:06:58 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/20 04:09:26 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:26:11 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 // Includes
 # include <fcntl.h>
-# include <math.h> 
+# include <math.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include "../../mlx/mlx_int.h"
 # include "../../mlx/mlx.h"
 # include "../../libft/headers/libft_H/libft.h"
@@ -31,12 +33,16 @@
 # define WHITE		"\033[0;37m"
 # define RESET		"\033[0;0m"
 
-// Texture files
+// Macros
+	// Textures
+// Basic Texture files
 # define WALL		"./texture_library/wall.xpm"
-# define EMPTY		"./texture_library/empty.xpm"
+# define FLOOR		"./texture_library/floor.xpm"
 # define COLLECT	"./texture_library/collectibles.xpm"
 # define PLAYER		"./texture_library/player.xpm"
 # define EXIT		"./texture_library/exit.xpm"
+// Medium Texture files
+# define P_E		"./texture_library/player_on_exit.xpm"
 
 // Structures
 typedef struct s_map
@@ -53,7 +59,7 @@ typedef struct s_map
 	int		count_zero;
 	int		count_p;
 	int		pos_p[2];
-	int		count_c;
+	int		cnt_c;
 	int		count_e;
 	int		pos_e[2];
 }			t_map;
@@ -64,7 +70,7 @@ typedef struct s_mlx
 	void	*mlx_p;
 	void	*win_p;
 	void	*wall_img;
-	void	*space_img;
+	void	*floor_img;
 	void	*collect_img;
 	void	*player_img;
 	void	*exit_img;
@@ -72,7 +78,6 @@ typedef struct s_mlx
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		scale;
 	int		win_x;
 	int		win_y;
 }			t_mlx;
@@ -114,15 +119,27 @@ void	map_find_spawn(t_map **map_data);
 	// mlx_manager.c
 void	mlx_manager(t_mlx **mlx, t_map **map_data);
 int		mlx_deal_key(int key, t_mlx **mlx);
-void	render_map(t_mlx **mlx, t_map **map_data);
+int		mlx_deal_cross(t_mlx **mlx);
+	// mlx_render_manager.c
+int		render_manager(t_mlx **mlx);
+void	render_back(t_mlx **mlx, t_map **map_data);
+void	render_front(t_mlx **mlx, t_map **map_data);
 void	my_img_to_win(t_mlx **mlx, void *img, int x, int y);
+	// mlx_mouv_manager.c
+void    move_up(t_mlx **mlx, t_map **map_data);
+void    move_down(t_mlx **mlx, t_map **map_data);
+void    move_left(t_mlx **mlx, t_map **map_data);
+void    move_right(t_mlx **mlx, t_map **map_data);
+	// mlx_mouv_utils.c
+void    swap_player_image(int form, t_mlx **mlx, t_map **map_data);
+void	update_tile(char *move, int x, int y, t_mlx **mlx, t_map **map_data);	
 	// mlx_init_data.c
 void	mlx_init_data(t_mlx **mlx, t_map **map_data);
 void    mlx_init_win(t_mlx **mlx, t_map **map_data);
-void    mlx_init_img_16(t_mlx **mlx, t_map **map_data);
-void    mlx_init_img_32(t_mlx **mlx, t_map **map_data);
-	// mlx_resize_img.c
-	// mlx_utils.c
-int  	calculate_scale(t_mlx **mlx, t_map **map_data);
+void    mlx_init_img_front(t_mlx **mlx, t_map **map_data);
+void    mlx_init_img_back(t_mlx **mlx, t_map **map_data);
+	// mlx_init_data_utils.c
+void  	calculate_scale_x(t_mlx **mlx, t_map **map_data);
+void  	calculate_scale_y(t_mlx **mlx, t_map **map_data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:44:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/19 16:28:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:51:24 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	map_init(t_map **map_data)
 	(*map_data)->count_p = 0;
 	(*map_data)->pos_p[0] = 0;
 	(*map_data)->pos_p[1] = 0;
-	(*map_data)->count_c = 0;
+	(*map_data)->cnt_c = 0;
 	(*map_data)->count_e = 0;
 	(*map_data)->pos_e[0] = 0;
 	(*map_data)->pos_e[1] = 0;
