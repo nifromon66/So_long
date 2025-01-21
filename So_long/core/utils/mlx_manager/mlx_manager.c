@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 20:40:57 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 02:20:23 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 05:12:01 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ void	mlx_manager(t_mlx **mlx, t_map **map_data)
 
 int	mlx_deal_key(int key, t_mlx **mlx)
 {
-	ft_printf("Key pressed: %d\n", key);
 	if (key == XK_Escape)
     {
         free_manager("all",(*mlx)->map_data, mlx);
         exit(0);
     }
-	if (key == 65362)
+	if (key == KEY_W)
 		move_up(mlx, (*mlx)->map_data);
-	if (key == 65364)
+	if (key == KEY_S)
 		move_down(mlx, (*mlx)->map_data);
-	if (key == 65361)
+	if (key == KEY_A)
 		move_left(mlx, (*mlx)->map_data);
-	if (key == 65363)
+	if (key == KEY_D)
 		move_right(mlx, (*mlx)->map_data);
+	ft_printf("Number of moves : [%d]\n", (*mlx)->moves);
 	return (0);
 }
 

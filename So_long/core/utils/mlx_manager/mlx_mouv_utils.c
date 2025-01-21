@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 00:32:27 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 02:08:56 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 03:52:02 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,43 @@ void    swap_player_image(int form, t_mlx **mlx, t_map **map_data)
 	    if (!(*mlx)->player_img)
 		    error_manager("Failed "PLAYER" to image", -1, mlx, map_data);
     }
-    tx = 192;
-    ty = 192; 
     if (form == 1)
+    {
+        mlx_destroy_image(mlx_p, (*mlx)->player_img);
+        (*mlx)->player_img = mlx_xpm_file_to_image(mlx_p, PLAYERL, &tx, &ty);
+	    if (!(*mlx)->player_img)
+		    error_manager("Failed "PLAYERL" to image", -1, mlx, map_data);
+    }
+    if (form == 2)
     {
         mlx_destroy_image((*mlx)->mlx_p, (*mlx)->player_img);
         (*mlx)->player_img = mlx_xpm_file_to_image(mlx_p, P_E, &tx, &ty);
 	    if (!(*mlx)->player_img)
 		    error_manager("Failed "P_E" to image", -1, mlx, map_data);
+    }
+    if (form == 3)
+    {
+        mlx_destroy_image((*mlx)->mlx_p, (*mlx)->player_img);
+        (*mlx)->player_img = mlx_xpm_file_to_image(mlx_p, PL_E, &tx, &ty);
+	    if (!(*mlx)->player_img)
+		    error_manager("Failed "PL_E" to image", -1, mlx, map_data);
+    }
+}
+
+void    swap_exit_image(int form, t_mlx **mlx, t_map **map_data)
+{
+    void    *mlx_p;
+    int     tx;
+    int     ty;
+    
+    mlx_p = (*mlx)->mlx_p;
+    tx = 192;
+    ty = 192;
+    if (form == 1)
+    {
+        mlx_destroy_image(mlx_p, (*mlx)->exit_img);
+        (*mlx)->exit_img = mlx_xpm_file_to_image(mlx_p, EX_ON, &tx, &ty);
+	    if (!(*mlx)->exit_img)
+		    error_manager("Failed "EX_ON" to image", -1, mlx, map_data);
     }
 }

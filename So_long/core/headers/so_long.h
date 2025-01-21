@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:06:58 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 01:26:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 05:06:17 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,23 @@
 # define RESET		"\033[0;0m"
 
 // Macros
+	// Key codes
+# define KEY_W 122
+# define KEY_A 113
+# define KEY_S 115
+# define KEY_D 100
 	// Textures
 // Basic Texture files
 # define WALL		"./texture_library/wall.xpm"
 # define FLOOR		"./texture_library/floor.xpm"
 # define COLLECT	"./texture_library/collectibles.xpm"
 # define PLAYER		"./texture_library/player.xpm"
+# define PLAYERL	"./texture_library/player_left.xpm"
 # define EXIT		"./texture_library/exit.xpm"
 // Medium Texture files
 # define P_E		"./texture_library/player_on_exit.xpm"
+# define PL_E		"./texture_library/player_on_exit_left.xpm"
+# define EX_ON		"./texture_library/exit_on.xpm"
 
 // Structures
 typedef struct s_map
@@ -60,6 +68,7 @@ typedef struct s_map
 	int		count_p;
 	int		pos_p[2];
 	int		cnt_c;
+	int		count_c;
 	int		count_e;
 	int		pos_e[2];
 }			t_map;
@@ -75,6 +84,7 @@ typedef struct s_mlx
 	void	*player_img;
 	void	*exit_img;
 	char	*addr;
+	int		moves;
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -111,7 +121,8 @@ void	map_check_enclosement(t_map **map_data);
 void	map_check_characters(t_map **map_data);
 void	map_check_elements(t_map **map_data);
 	// map_checker_bis.c
-int		map_check_way(int x, int y, t_map **map_data);
+int		map_check_way_exit(int x, int y, t_map **map_data);
+int		map_check_way_collect(int x, int y, t_map **map_data);
 int		map_is_valid_pos(int x, int y, t_map **map_data);
 void	map_find_exit(t_map **map_data);
 void	map_find_spawn(t_map **map_data);
@@ -132,6 +143,7 @@ void    move_left(t_mlx **mlx, t_map **map_data);
 void    move_right(t_mlx **mlx, t_map **map_data);
 	// mlx_mouv_utils.c
 void    swap_player_image(int form, t_mlx **mlx, t_map **map_data);
+void    swap_exit_image(int form, t_mlx **mlx, t_map **map_data);
 void	update_tile(char *move, int x, int y, t_mlx **mlx, t_map **map_data);	
 	// mlx_init_data.c
 void	mlx_init_data(t_mlx **mlx, t_map **map_data);

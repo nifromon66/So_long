@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/20 23:51:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 04:51:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	map_check_rectangle(t_map **map_data)
 	while (i != (*map_data)->h)
 	{
 		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t)(*map_data)->w)
-			error_manager("Map has irregular w", -1, map_data);
+			error_manager("Map has irregular w", -2, map_data);
 		i++;
 	}
 }
@@ -41,9 +41,9 @@ void	map_check_enclosement(t_map **map_data)
 		while (i != w)
 		{
 			if ((j == 0 || j == h) && (*map_data)->map[j][i] != '1')
-				error_manager("Map isn't enclosed by walls", -1, map_data);
+				error_manager("Map isn't enclosed by walls", -2, map_data);
 			else if ((i == 0 || i == w) && (*map_data)->map[j][i] != '1')
-				error_manager("Map isn't enclosed by walls", -1, map_data);
+				error_manager("Map isn't enclosed by walls", -2, map_data);
 			i++;
 		}
 		j++;
@@ -73,7 +73,7 @@ void	map_check_characters(t_map **map_data)
 			else if (c == '0')
 				(*map_data)->count_zero++;
 			else if (c != '1')
-				error_manager("Map has an invalid character", -1, map_data);
+				error_manager("Map has an invalid character", -2, map_data);
 		}
 	}
 }
@@ -81,9 +81,9 @@ void	map_check_characters(t_map **map_data)
 void	map_check_elements(t_map **map_data)
 {
 	if ((*map_data)->count_p != 1)
-		error_manager("Map has invalid number of spawn", -1, map_data);
+		error_manager("Map has invalid number of spawn", -2, map_data);
 	if (!((*map_data)->cnt_c >= 1))
-		error_manager("Map has invalid number of collectibles", -1, map_data);
+		error_manager("Map has invalid number of collectibles", -2, map_data);
 	if ((*map_data)->count_e != 1)
-		error_manager("Map has invalid number of exit", -1, map_data);
+		error_manager("Map has invalid number of exit", -2, map_data);
 }
