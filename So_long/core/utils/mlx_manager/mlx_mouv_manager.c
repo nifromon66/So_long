@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 23:01:13 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 05:09:01 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:30:40 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void    move_up(t_mlx **mlx, t_map **map_data)
 	(*mlx)->moves++;
     if ((*map_data)->map[pos_y][pos_x] != '1')
     {
+		if (pos_y == (*mlx)->biome_y)
+			(*mlx)->biome_y -= 7;
         if ((*map_data)->map[pos_y][pos_x] == 'E' && (*map_data)->cnt_c != 0)
 			swap_player_image(2, mlx, map_data);
 		else if ((*map_data)->map[pos_y][pos_x] == 'E')
@@ -47,6 +49,8 @@ void    move_down(t_mlx **mlx, t_map **map_data)
 	(*mlx)->moves++;
     if ((*map_data)->map[pos_y][pos_x] != '1')
     {
+		if ((pos_y - 7) == (*mlx)->biome_y)
+			(*mlx)->biome_y += 7;
         if ((*map_data)->map[pos_y][pos_x] == 'E' && (*map_data)->cnt_c != 0)
 			swap_player_image(2, mlx, map_data);
 		else if ((*map_data)->map[pos_y][pos_x] == 'E')
@@ -72,6 +76,8 @@ void    move_left(t_mlx **mlx, t_map **map_data)
 	(*mlx)->moves++;
     if ((*map_data)->map[pos_y][pos_x] != '1')
     {
+		if (pos_x == (*mlx)->biome_x)
+			(*mlx)->biome_x -= 13;
         if ((*map_data)->map[pos_y][pos_x] == 'E' && (*map_data)->cnt_c != 0)
 			swap_player_image(3, mlx, map_data);
 		else if ((*map_data)->map[pos_y][pos_x] == 'E')
@@ -100,6 +106,8 @@ void    move_right(t_mlx **mlx, t_map **map_data)
 	(*mlx)->moves++;
     if ((*map_data)->map[pos_y][pos_x] != '1')
     {
+		if ((pos_x - 13) == (*mlx)->biome_x)
+			(*mlx)->biome_x += 13;
         if ((*map_data)->map[pos_y][pos_x] == 'E' && (*map_data)->cnt_c != 0)
 			swap_player_image(2, mlx, map_data);
 		else if ((*map_data)->map[pos_y][pos_x] == 'E')
@@ -115,7 +123,6 @@ void    move_right(t_mlx **mlx, t_map **map_data)
 			swap_player_image(0, mlx, map_data);
 		(*map_data)->map[pos_y][pos_x] = 'P';
 		update_tile("right", pos_x, pos_y, mlx, map_data);
-		(*map_data)->pos_p[0] = pos_x;
-		
+		(*map_data)->pos_p[0] = pos_x;	
     }
 }

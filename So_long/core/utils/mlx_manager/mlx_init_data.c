@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 15:41:35 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 05:06:59 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:06:17 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	mlx_init_data(t_mlx **mlx, t_map **map_data)
 		error_manager("Memory allocation failed", -1, mlx, map_data);
 	(*mlx)->map_data = map_data;
 	(*mlx)->moves = 0;
+	(*mlx)->biome_x = 0;
+	(*mlx)->biome_y = 0;
 	(*mlx)->mlx_p = NULL;
     (*mlx)->addr = NULL;
 	(*mlx)->bpp = 0;

@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:06:58 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 05:06:17 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:05:41 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ typedef struct s_mlx
 	void	*exit_img;
 	char	*addr;
 	int		moves;
+	int		biome_x;
+	int		biome_y;
 	int		bpp;
 	int		line_len;
 	int		endian;

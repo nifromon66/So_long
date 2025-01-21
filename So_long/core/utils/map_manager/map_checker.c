@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 00:29:26 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 04:51:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 05:29:51 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	map_check_rectangle(t_map **map_data)
 	while (i != (*map_data)->h)
 	{
 		if ((ft_strlen((*map_data)->map[i]) - 1) != (size_t)(*map_data)->w)
-			error_manager("Map has irregular w", -2, map_data);
+			error_manager("Map has irregular width", -2, map_data);
 		i++;
 	}
 }

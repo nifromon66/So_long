@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:02:40 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/21 02:01:09 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/21 08:07:04 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	render_front(t_mlx **mlx, t_map **map_data)
 
 void	my_img_to_win(t_mlx **mlx, void *img, int x, int y)
 {
-	x = x * 192;
-	y = y * 192;
+	x = (x - (*mlx)->biome_x) * 192;
+	y = (y - (*mlx)->biome_y) * 192;
 	mlx_put_image_to_window((*mlx)->mlx_p, (*mlx)->win_p, img, x, y);
 }
