@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_interactions_manager.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 03:13:49 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 06:58:16 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:16:07 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	mlx_key(int key, t_mlx **mlx)
 	if (key == KEY_D)
 		mlx_movement_manager(4, mlx, (*mlx)->map);
 	ft_printf("Number of moves : [ %d ]\n", (*mlx)->moves);
+	mlx_render_manager(mlx);
 	return (0);
 }
 

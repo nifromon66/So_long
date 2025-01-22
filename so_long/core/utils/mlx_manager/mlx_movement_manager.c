@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_movement_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 03:40:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 07:01:37 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:15:46 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,9 @@ int	move_up(t_mlx **mlx, char **map, int *count_c)
 			mlx_animation_manager(2, 2, pos, mlx);
 		else if (map[pos[1]][pos[0]] == 'E')
 			return (0);
-		else if (map[pos[1]][pos[0]] == 'C')
-		{
-			(*count_c)--;
-			if (*count_c == 0)
-				mlx_animation_manager(3, 2, pos, mlx);
-		}
+		else if (map[pos[1]][pos[0]] == 'C'
+			&& ((*count_c)-- == 0 || *count_c == 0))
+			mlx_animation_manager(3, 2, pos, mlx);
 		map[pos[1]][pos[0]] = 'P';
 		mlx_animation_manager(0, 4, pos, mlx);
 		(*(*(*mlx)->map)->spawn)->y = pos[1];
@@ -79,12 +76,9 @@ int	move_down(t_mlx **mlx, char **map, int *count_c)
 			mlx_animation_manager(2, 2, pos, mlx);
 		else if (map[pos[1]][pos[0]] == 'E')
 			return (0);
-		else if (map[pos[1]][pos[0]] == 'C')
-		{
-			(*count_c)--;
-			if (*count_c == 0)
-				mlx_animation_manager(3, 2, pos, mlx);
-		}
+		else if (map[pos[1]][pos[0]] == 'C'
+			&& ((*count_c)-- == 0 || *count_c == 0))
+			mlx_animation_manager(3, 2, pos, mlx);
 		map[pos[1]][pos[0]] = 'P';
 		mlx_animation_manager(0, 3, pos, mlx);
 		(*(*(*mlx)->map)->spawn)->y = pos[1];
@@ -107,13 +101,11 @@ int	move_left(t_mlx **mlx, char **map, int *count_c)
 			mlx_animation_manager(2, 2, pos, mlx);
 		else if (map[pos[1]][pos[0]] == 'E')
 			return (0);
-		else if (map[pos[1]][pos[0]] == 'C')
-		{
-			(*count_c)--;
-			if (*count_c == 0)
-				mlx_animation_manager(3, 2, pos, mlx);
-		}
-		mlx_animation_manager(1, 2, pos, mlx);
+		else if (map[pos[1]][pos[0]] == 'C'
+			&& ((*count_c)-- == 0 || *count_c == 0))
+			mlx_animation_manager(3, 2, pos, mlx);
+		else
+			mlx_animation_manager(1, 2, pos, mlx);
 		map[pos[1]][pos[0]] = 'P';
 		mlx_animation_manager(0, 2, pos, mlx);
 		(*(*(*mlx)->map)->spawn)->x = pos[0];
@@ -136,13 +128,11 @@ int	move_right(t_mlx **mlx, char **map, int *count_c)
 			mlx_animation_manager(2, 1, pos, mlx);
 		else if (map[pos[1]][pos[0]] == 'E')
 			return (0);
-		else if (map[pos[1]][pos[0]] == 'C')
-		{
-			(*count_c)--;
-			if (*count_c == 0)
-				mlx_animation_manager(3, 2, pos, mlx);
-		}
-		mlx_animation_manager(1, 1, pos, mlx);
+		else if (map[pos[1]][pos[0]] == 'C'
+			&& ((*count_c)-- == 0 || *count_c == 0))
+			mlx_animation_manager(3, 2, pos, mlx);
+		else
+			mlx_animation_manager(1, 1, pos, mlx);
 		map[pos[1]][pos[0]] = 'P';
 		mlx_animation_manager(0, 1, pos, mlx);
 		(*(*(*mlx)->map)->spawn)->x = pos[0];

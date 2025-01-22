@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 07:02:22 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 09:01:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@
 # define RESET		"\033[0;0m"
 
 // Keycodes
-# define KEY_W      122
-# define KEY_A      113
-# define KEY_S      115
-# define KEY_D      100
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
 
 // Tile size
 # define TILE		192
 
 // Assets
 	// Background
-# define WALL       "./assets/wall/wall.xpm"
-# define FLOOR      "./assets/floor/floor.xpm"
-# define EXIT_OFF   "./assets/exit/exit_off.xpm"
-# define EXIT_ON   "./assets/exit/exit_on.xpm"
+# define WALL		"./assets/wall/wall.xpm"
+# define FLOOR		"./assets/floor/floor.xpm"
+# define EXIT_OFF	"./assets/exit/exit_off.xpm"
+# define EXIT_ON	"./assets/exit/exit_on.xpm"
 	// Collectibles
 # define COLLECT	"./assets/collect/collect.xpm"
 	// Player Basic
@@ -57,7 +57,7 @@
 # define PLAYER_LE	"./assets/player/player_on_exit_left.xpm"
 
 // Structures
-	// Positions	
+	// Positions
 typedef struct s_pos
 {
 	int		x;
