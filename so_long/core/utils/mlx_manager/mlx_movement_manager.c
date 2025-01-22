@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 03:40:14 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 11:15:46 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:31:06 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ int	move_up(t_mlx **mlx, char **map, int *count_c)
 	{
 		if (pos[1] == (*mlx)->biome_y)
 			(*mlx)->biome_y -= 7;
-		if (map[pos[1]][pos[0]] == 'E' && *count_c != 0)
-			mlx_animation_manager(2, 2, pos, mlx);
-		else if (map[pos[1]][pos[0]] == 'E')
+		if (map[pos[1]][pos[0]] == 'E' && *count_c == 0)
 			return (0);
 		else if (map[pos[1]][pos[0]] == 'C'
 			&& ((*count_c)-- == 0 || *count_c == 0))
@@ -72,9 +70,7 @@ int	move_down(t_mlx **mlx, char **map, int *count_c)
 	{
 		if ((pos[1] - 7) == (*mlx)->biome_y)
 			(*mlx)->biome_y += 7;
-		if (map[pos[1]][pos[0]] == 'E' && *count_c != 0)
-			mlx_animation_manager(2, 2, pos, mlx);
-		else if (map[pos[1]][pos[0]] == 'E')
+		if (map[pos[1]][pos[0]] == 'E' && *count_c == 0)
 			return (0);
 		else if (map[pos[1]][pos[0]] == 'C'
 			&& ((*count_c)-- == 0 || *count_c == 0))
@@ -93,13 +89,12 @@ int	move_left(t_mlx **mlx, char **map, int *count_c)
 	pos[0] = (*(*(*mlx)->map)->spawn)->x - 1;
 	pos[1] = (*(*(*mlx)->map)->spawn)->y;
 	(*mlx)->moves++;
+	(*mlx)->direction = 2;
 	if (map[pos[1]][pos[0]] != '1')
 	{
 		if (pos[0] == (*mlx)->biome_x)
 			(*mlx)->biome_x -= 13;
-		if (map[pos[1]][pos[0]] == 'E' && *count_c != 0)
-			mlx_animation_manager(2, 2, pos, mlx);
-		else if (map[pos[1]][pos[0]] == 'E')
+		if (map[pos[1]][pos[0]] == 'E' && *count_c == 0)
 			return (0);
 		else if (map[pos[1]][pos[0]] == 'C'
 			&& ((*count_c)-- == 0 || *count_c == 0))
@@ -120,13 +115,12 @@ int	move_right(t_mlx **mlx, char **map, int *count_c)
 	pos[0] = (*(*(*mlx)->map)->spawn)->x + 1;
 	pos[1] = (*(*(*mlx)->map)->spawn)->y;
 	(*mlx)->moves++;
+	(*mlx)->direction = 1;
 	if (map[pos[1]][pos[0]] != '1')
 	{
 		if ((pos[0] - 13) == (*mlx)->biome_x)
 			(*mlx)->biome_x += 13;
-		if (map[pos[1]][pos[0]] == 'E' && *count_c != 0)
-			mlx_animation_manager(2, 1, pos, mlx);
-		else if (map[pos[1]][pos[0]] == 'E')
+		if (map[pos[1]][pos[0]] == 'E' && *count_c == 0)
 			return (0);
 		else if (map[pos[1]][pos[0]] == 'C'
 			&& ((*count_c)-- == 0 || *count_c == 0))

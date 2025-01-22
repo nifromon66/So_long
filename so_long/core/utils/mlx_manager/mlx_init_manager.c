@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init_manager.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 02:35:16 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 06:57:23 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:10:48 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	mlx_init_manager(t_mlx **mlx, t_map **map, t_img **img)
 	(*mlx)->biome_x = 0;
 	(*mlx)->biome_y = 0;
 	(*mlx)->moves = 0;
+	(*mlx)->direction = 1;
 }
 
 int	mlx_init_window(t_mlx **mlx)

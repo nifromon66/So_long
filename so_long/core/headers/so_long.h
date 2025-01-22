@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:39:01 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 09:01:49 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:31:50 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "../../mlx/mlx.h"
 # include "../../libft/headers/libft_H/libft.h"
 
-// Colors
+// Text Colors
 # define BLACK		"\033[0;30m"
 # define RED		"\033[0;31m"
 # define GREEN		"\033[0;32m"
@@ -31,6 +31,8 @@
 # define CYAN		"\033[0;36m"
 # define WHITE		"\033[0;37m"
 # define RESET		"\033[0;0m"
+// Pixel colors
+# define PIX		0xFF0000
 
 // Keycodes
 # define KEY_W		119
@@ -50,11 +52,35 @@
 	// Collectibles
 # define COLLECT	"./assets/collect/collect.xpm"
 	// Player Basic
-# define PLAYERR	"./assets/player/player_right.xpm"
-# define PLAYERL	"./assets/player/player_left.xpm"
+# define PLAYERR	"./assets/player/player_right/player_right.xpm"
+# define PLAYERL	"./assets/player/player_left/player_left.xpm"
 	// Player on exit off
-# define PLAYER_RE	"./assets/player/player_on_exit_right.xpm"
-# define PLAYER_LE	"./assets/player/player_on_exit_left.xpm"
+# define PLAYER_RE	"./assets/player/on_exit_right/player_on_exit_right.xpm"
+# define PLAYER_LE	"./assets/player/on_exit_left/player_on_exit_left.xpm"
+	// Player animation right
+# define PLAYERR1	"./assets/player/player_right/player_right1.xpm"
+# define PLAYERR2	"./assets/player/player_right/player_right2.xpm"
+# define PLAYERR3	"./assets/player/player_right/player_right3.xpm"
+# define PLAYERR4	"./assets/player/player_right/player_right4.xpm"
+# define PLAYERR5	"./assets/player/player_right/player_right5.xpm"
+	// Player animation left
+# define PLAYERL1	"./assets/player/player_left/player_left1.xpm"
+# define PLAYERL2	"./assets/player/player_left/player_left2.xpm"
+# define PLAYERL3	"./assets/player/player_left/player_left3.xpm"
+# define PLAYERL4	"./assets/player/player_left/player_left4.xpm"
+# define PLAYERL5	"./assets/player/player_left/player_left5.xpm"
+	// Player animation on exit off right
+# define PLAYER_RE1	"./assets/player/on_exit_right/player_on_exit_right1.xpm"
+# define PLAYER_RE2	"./assets/player/on_exit_right/player_on_exit_right2.xpm"
+# define PLAYER_RE3	"./assets/player/on_exit_right/player_on_exit_right3.xpm"
+# define PLAYER_RE4	"./assets/player/on_exit_right/player_on_exit_right4.xpm"
+# define PLAYER_RE5	"./assets/player/on_exit_right/player_on_exit_right5.xpm"
+	// Player animation on exit off left
+# define PLAYER_LE1	"./assets/player/on_exit_left/player_on_exit_left1.xpm"
+# define PLAYER_LE2	"./assets/player/on_exit_left/player_on_exit_left2.xpm"
+# define PLAYER_LE3	"./assets/player/on_exit_left/player_on_exit_left3.xpm"
+# define PLAYER_LE4	"./assets/player/on_exit_left/player_on_exit_left4.xpm"
+# define PLAYER_LE5	"./assets/player/on_exit_left/player_on_exit_left5.xpm"
 
 // Structures
 	// Positions
@@ -98,6 +124,7 @@ typedef struct s_mlx
 	int		biome_x;
 	int		biome_y;
 	int		moves;
+	int		direction;
 }			t_mlx;
 
 // Functions
@@ -135,6 +162,7 @@ int		mlx_init_image(void *mlx_p, t_img **img);
 void	mlx_interact_manager(t_mlx **mlx, void *win_p);
 int		mlx_key(int key, t_mlx **mlx);
 int		mlx_cross(t_mlx **mlx);
+void	draw_large_text(t_mlx **mlx, int x, int y, char *str);
 	// mlx_movement_manager.c
 void	mlx_movement_manager(int move, t_mlx **mlx, t_map **map);
 int		move_up(t_mlx **mlx, char **map, int *count_c);
@@ -144,14 +172,21 @@ int		move_right(t_mlx **mlx, char **map, int *count_c);
 	// mlx_animation_manager.c
 void	mlx_animation_manager(int asset, int form, int pos[], t_mlx **mlx);
 void	mlx_animation_putback(int move, int pos[], t_mlx **mlx);
-void	mlx_animation_player(int form, t_mlx **mlx);
+void	mlx_animation_player_shift(int form, t_mlx **mlx);
 void	mlx_animation_player_exit(int form, t_mlx **mlx);
 void	mlx_animation_exit(int form, t_mlx **mlx);
+	// mlx_animation_player.c
+void	mlx_animation_player(t_mlx **mlx, t_img **img, int move, int pos[]);
+void	mlx_animation_player_right(t_mlx **mlx, t_img **img, int x, int y);
+void	mlx_animation_player_left(t_mlx **mlx, t_img **img, int x, int y);
+void	mlx_animation_player_right_exit(t_mlx **mlx, t_img **img, int x, int y);
+void	mlx_animation_player_left_exit(t_mlx **mlx, t_img **img, int x, int y);
 	// mlx_animation_swap.c
 void	mlx_animation_swap(t_mlx **mlx, void **img, char *new);
 	// mlx_render_manager.c
 int		mlx_render_manager(t_mlx **mlx);
 void	mlx_render(t_mlx **mlx, t_img **img, t_map **map);
+void	mlx_render_player(t_mlx **mlx, t_img **img, t_map **map);
 void	my_img_to_win(t_mlx **mlx, void *img, int x, int y);
 // error_manager
 	// main.c

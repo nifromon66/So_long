@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:18:08 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 11:16:24 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:25:35 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int argc, char *argv[])
 
 void	mlx_manager(t_mlx **mlx)
 {
-	mlx_render_manager(mlx);
+	mlx_render(mlx, (*mlx)->img, (*mlx)->map);
+	mlx_loop_hook((*mlx)->mlx_p, &mlx_render_manager, mlx);
 	mlx_interact_manager(mlx, (*mlx)->win_p);
 	mlx_loop((*mlx)->mlx_p);
 }

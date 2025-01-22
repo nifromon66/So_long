@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_render_manager.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 05:26:45 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/22 06:57:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:47:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	mlx_render_manager(t_mlx **mlx)
 {
-	mlx_render(mlx, (*mlx)->img, (*mlx)->map);
+	mlx_render_player(mlx, (*mlx)->img, (*mlx)->map);
 	return (0);
 }
 
@@ -39,8 +39,28 @@ void	mlx_render(t_mlx **mlx, t_img **img, t_map **map)
 				my_img_to_win(mlx, (*img)->exit, i, j);
 			else if ((*map)->map[j][i] == 'C')
 				my_img_to_win(mlx, (*img)->collect, i, j);
-			else if ((*map)->map[j][i] == 'P')
-				my_img_to_win(mlx, (*img)->player, i, j);
+		}
+	}
+}
+
+void	mlx_render_player(t_mlx **mlx, t_img **img, t_map **map)
+{
+	int	pos[2];
+
+	if (!mlx || !*mlx || !map || !*map)
+		return ;
+	pos[0] = -1;
+	while (++(pos[0]) < (*map)->height)
+	{
+		pos[1] = -1;
+		while (++(pos[1]) < (*map)->width)
+		{
+			if ((*map)->map[pos[0]][pos[1]] == 'P'
+				&& (pos[0] == (*(*map)->exit)->y)
+				&& (pos[1] == (*(*map)->exit)->x))
+				mlx_animation_player(mlx, img, ((*mlx)->direction + 2), pos);
+			else if ((*map)->map[pos[0]][pos[1]] == 'P')
+				mlx_animation_player(mlx, img, (*mlx)->direction, pos);
 		}
 	}
 }
