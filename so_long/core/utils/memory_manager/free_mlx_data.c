@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 20:50:12 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/20 18:30:39 by nifromon         ###   ########.fr       */
+/*   Created: 2025/01/22 06:10:28 by nifromon          #+#    #+#             */
+/*   Updated: 2025/01/22 06:54:12 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,49 +19,43 @@ void	free_mlx_data(va_list arg)
 	mlx = va_arg(arg, t_mlx **);
 	if (*mlx)
 	{
-		free_img(mlx);
-        if ((*mlx)->win_p)
+		free_mlx_img((*mlx)->mlx_p, (*mlx)->img);
+		if ((*mlx)->win_p)
 		{
-            mlx_destroy_window((*mlx)->mlx_p, (*mlx)->win_p);
+			mlx_destroy_window((*mlx)->mlx_p, (*mlx)->win_p);
 			(*mlx)->win_p = NULL;
 		}
 		if ((*mlx)->mlx_p)
 		{
-            mlx_destroy_display((*mlx)->mlx_p);
+			mlx_destroy_display((*mlx)->mlx_p);
 			free((*mlx)->mlx_p);
 			(*mlx)->mlx_p = NULL;
 		}
-		(*mlx)->map_data = NULL;
+		(*mlx)->map = NULL;
 		free(*mlx);
 		*mlx = NULL;
 	}
 }
 
-void	free_img(t_mlx **mlx)
+void	free_mlx_img(void *mlx_p, t_img **img)
 {
-	if ((*mlx)->wall_img)
+	if (*img)
 	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->wall_img);
-		(*mlx)->wall_img = NULL;
+		free_img(mlx_p, &(*img)->wall);
+		free_img(mlx_p, &(*img)->floor);
+		free_img(mlx_p, &(*img)->exit);
+		free_img(mlx_p, &(*img)->collect);
+		free_img(mlx_p, &(*img)->player);
+		free(*img);
+		*img = NULL;
 	}
-	if ((*mlx)->floor_img)
+}
+
+void	free_img(void *mlx_p, void **img)
+{
+	if (*img)
 	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->floor_img);
-		(*mlx)->floor_img = NULL;
-	}
-	if ((*mlx)->collect_img)
-	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->collect_img);
-		(*mlx)->collect_img = NULL;
-	}
-	if ((*mlx)->player_img)
-	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->player_img);
-		(*mlx)->player_img = NULL;
-	}
-	if ((*mlx)->exit_img)
-	{
-		mlx_destroy_image((*mlx)->mlx_p, (*mlx)->exit_img);
-		(*mlx)->exit_img = NULL;
+		mlx_destroy_image(mlx_p, *img);
+		*img = NULL;
 	}
 }

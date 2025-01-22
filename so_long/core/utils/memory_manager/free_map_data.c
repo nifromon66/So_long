@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 20:48:42 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/19 13:49:02 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/22 01:48:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,74 @@
 
 void	free_map_data(va_list arg)
 {
-	t_map	**map_data;
+	t_map	**map;
 
-	map_data = va_arg(arg, t_map **);
-	if (*map_data)
+	map = va_arg(arg, t_map **);
+	if (*map)
 	{
-		if ((*map_data)->fd != -1)
+		if ((*map)->fd != -1)
 		{
-			close((*map_data)->fd);
-			(*map_data)->fd = -1;
+			close((*map)->fd);
+			(*map)->fd = -1;
 		}
-		free_map(map_data);
-		free_visited(map_data);
-		free(*map_data);
-		*map_data = NULL;
+		free_map(map, (*map)->height);
+		free_positions((*map)->spawn, (*map)->exit);
+		free_visited(map, (*map)->height);
+		free(*map);
+		*map = NULL;
 	}
 }
 
-void	free_map(t_map **map_data)
+void	free_map(t_map **map, int y)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	if ((*map_data)->map)
+	j = -1;
+	if ((*map)->map)
 	{
-		while (i < (*map_data)->h + 1)
+		while (++j != y)
 		{
-			if ((*map_data)->map[i] != NULL)
+			if ((*map)->map[j])
 			{
-				free((*map_data)->map[i]);
-				(*map_data)->map[i] = NULL;
+				free((*map)->map[j]);
+				(*map)->map[j] = NULL;
 			}
-			i++;
 		}
-		free((*map_data)->map);
-		(*map_data)->map = NULL;
+		free((*map)->map);
+		(*map)->map = NULL;
 	}
 }
 
-void	free_visited(t_map **map_data)
+void	free_positions(t_pos **spawn, t_pos **exit)
 {
-	int	i;
-
-	i = 0;
-	if ((*map_data)->visited)
+	if (*spawn)
 	{
-		while (i < (*map_data)->h)
+		free(*spawn);
+		*spawn = NULL;
+	}
+	if (*exit)
+	{
+		free(*exit);
+		*exit = NULL;
+	}
+}
+
+void	free_visited(t_map **map, int y)
+{
+	int	j;
+
+	j = -1;
+	if ((*map)->visited)
+	{
+		while (++j != y)
 		{
-			if ((*map_data)->visited[i])
+			if ((*map)->visited[j])
 			{
-				free((*map_data)->visited[i]);
-				(*map_data)->visited[i] = 0;
+				free((*map)->visited[j]);
+				(*map)->visited[j] = NULL;
 			}
-			i++;
 		}
-		free((*map_data)->visited);
-		(*map_data)->visited = NULL;
+		free((*map)->visited);
+		(*map)->visited = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/21 01:12:33 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/22 06:20:33 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,18 +61,17 @@ SRC =				\
 OBJ_SRC =			$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 
 UTILS =				\
-					$(UTILS_DIR)/error_manager/error_manager.c \
-					$(UTILS_DIR)/map_manager/map_manager.c \
-					$(UTILS_DIR)/map_manager/map_checker.c \
-					$(UTILS_DIR)/map_manager/map_checker_bis.c \
-					$(UTILS_DIR)/mlx_manager/mlx_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_init_data.c \
+					$(UTILS_DIR)/map_manager/map_init_manager.c \
+					$(UTILS_DIR)/map_manager/map_read.c \
+					$(UTILS_DIR)/map_manager/map_check_manager.c \
+					$(UTILS_DIR)/map_manager/map_path_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_init_manager.c \
 					$(UTILS_DIR)/mlx_manager/mlx_render_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_mouv_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_mouv_utils.c \
-					$(UTILS_DIR)/mlx_manager/mlx_init_data_utils.c \
+					$(UTILS_DIR)/mlx_manager/mlx_interactions_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_movement_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_animation_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_animation_swap.c \
 					$(UTILS_DIR)/memory_manager/allocation_manager.c \
-					$(UTILS_DIR)/memory_manager/free_manager.c \
 					$(UTILS_DIR)/memory_manager/free_map_data.c \
 					$(UTILS_DIR)/memory_manager/free_mlx_data.c
 
@@ -104,10 +103,9 @@ $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 					@mkdir -p $(OBJ_DIR)
 					@mkdir -p $(OBJ_UTILS_DIR)
-					@mkdir -p $(OBJ_UTILS_DIR)/error_manager
-					@mkdir -p $(OBJ_UTILS_DIR)/memory_manager
 					@mkdir -p $(OBJ_UTILS_DIR)/map_manager
 					@mkdir -p $(OBJ_UTILS_DIR)/mlx_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/memory_manager
 					$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
 
 clean:
