@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+         #
+#    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/22 13:22:13 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/23 17:23:10 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,9 +69,8 @@ UTILS =				\
 					$(UTILS_DIR)/mlx_manager/mlx_render_manager.c \
 					$(UTILS_DIR)/mlx_manager/mlx_interactions_manager.c \
 					$(UTILS_DIR)/mlx_manager/mlx_movement_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_animation_manager.c \
+					$(UTILS_DIR)/mlx_manager/mlx_update_manager.c \
 					$(UTILS_DIR)/mlx_manager/mlx_animation_player.c \
-					$(UTILS_DIR)/mlx_manager/mlx_animation_swap.c \
 					$(UTILS_DIR)/memory_manager/allocation_manager.c \
 					$(UTILS_DIR)/memory_manager/free_map_data.c \
 					$(UTILS_DIR)/memory_manager/free_mlx_data.c
