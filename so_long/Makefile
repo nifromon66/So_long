@@ -6,7 +6,7 @@
 #    By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/16 15:19:47 by nifromon          #+#    #+#              #
-#    Updated: 2025/01/23 17:23:10 by nifromon         ###   ########.fr        #
+#    Updated: 2025/01/24 08:02:24 by nifromon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME =				so_long
 
 # Compilation
 CC =				@gcc
-CFLAGS =			-Wall -Werror -Wextra -L $(LIBFT_DIR)
-MFLAGS = 			-L $(MLX_DIR) -L /usr/include/X11/ \
+CFLAGS =			-Wall -Werror -Wextra -L $(LIBFT_DIR)/
+MFLAGS = 			-L $(MLX_DIR)/ -L /usr/include/X11/ \
 					-L /usr/lib/x86_64-linux-gnu/ \
 					-lmlx -lXext -lX11 -lXrandr -lm -lbsd -lXfixes
 
@@ -25,9 +25,9 @@ INCLUDES = 			-I $(HEADER_DIR)/ -I $(LIBFT_DIR)/headers/ -I $(MLX_DIR)/ \
 					-I /usr/lib/x86_64-linux-gnu/
 
 # Directories
-SRC_DIR =			core/src
-UTILS_DIR =			core/utils
-HEADER_DIR =		core/headers
+SRC_DIR =			mandatory/src
+UTILS_DIR =			mandatory/utils
+HEADER_DIR =		mandatory/headers
 
 OBJ_DIR =			obj
 OBJ_SRC_DIR =		$(OBJ_DIR)/src_obj
@@ -37,7 +37,7 @@ MLX_DIR =			mlx
 MLX =				$(MLX_DIR)/libmlx.a
 
 LIBFT_DIR =			libft
-LIBFT =				$(LIBFT_DIR)/libft.a
+LIBFT =				$(LIBFT_DIR)/libft_inc.a
 
 # Utils
 RM =				@rm -rf
@@ -55,25 +55,25 @@ RESET =				\033[1;0m
 
 # Sources and objects
 SRC =				\
-					$(SRC_DIR)/main.c
+					$(SRC_DIR)/so_long.c
 
 
 OBJ_SRC =			$(SRC:$(SRC_DIR)/%.c=$(OBJ_SRC_DIR)/%.o)
 
 UTILS =				\
-					$(UTILS_DIR)/map_manager/map_init_manager.c \
-					$(UTILS_DIR)/map_manager/map_read.c \
-					$(UTILS_DIR)/map_manager/map_check_manager.c \
-					$(UTILS_DIR)/map_manager/map_path_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_init_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_render_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_interactions_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_movement_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_update_manager.c \
-					$(UTILS_DIR)/mlx_manager/mlx_animation_player.c \
-					$(UTILS_DIR)/memory_manager/allocation_manager.c \
-					$(UTILS_DIR)/memory_manager/free_map_data.c \
-					$(UTILS_DIR)/memory_manager/free_mlx_data.c
+					$(UTILS_DIR)/sl_map_manager/sl_map_init_manager.c \
+					$(UTILS_DIR)/sl_map_manager/sl_map_read.c \
+					$(UTILS_DIR)/sl_map_manager/sl_map_check_manager.c \
+					$(UTILS_DIR)/sl_map_manager/sl_map_path_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_init_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_render_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_interactions_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_movement_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_update_manager.c \
+					$(UTILS_DIR)/sl_game_manager/sl_game_images_swap.c \
+					$(UTILS_DIR)/sl_memory_manager/sl_allocation_manager.c \
+					$(UTILS_DIR)/sl_memory_manager/sl_free_map_data.c \
+					$(UTILS_DIR)/sl_memory_manager/sl_free_game_data.c
 
 OBJ_UTILS =			$(UTILS:$(UTILS_DIR)/%.c=$(OBJ_UTILS_DIR)/%.o)
 
@@ -103,9 +103,9 @@ $(OBJ_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 $(OBJ_UTILS_DIR)/%.o: $(UTILS_DIR)/%.c
 					@mkdir -p $(OBJ_DIR)
 					@mkdir -p $(OBJ_UTILS_DIR)
-					@mkdir -p $(OBJ_UTILS_DIR)/map_manager
-					@mkdir -p $(OBJ_UTILS_DIR)/mlx_manager
-					@mkdir -p $(OBJ_UTILS_DIR)/memory_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/sl_map_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/sl_game_manager
+					@mkdir -p $(OBJ_UTILS_DIR)/sl_memory_manager
 					$(CC) -s -c $(CFLAGS) $(INCLUDES) $(MFLAGS) $< -o $@
 
 clean:
