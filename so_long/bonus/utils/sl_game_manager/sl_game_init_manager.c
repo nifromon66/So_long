@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_game_init_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:40:52 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/27 05:39:08 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:30:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	sl_game_init_manager(t_sl_game **game, t_sl_map **map, t_sl_img **img)
 		sl_error_game("Error\nFailed to create window", -2, map, game);
 	if (sl_game_init_image((*game)->mlx_p, img) == -1)
 		sl_error_game("Error\nFailed to create images", -2, map, game);
-	(*game)->biome_x = 0;
-	(*game)->biome_y = 0;
+	(*game)->biome_x = ((*(*map)->spawn)->x / ((*game)->screen_x / TILE));
+	(*game)->biome_x *= ((*game)->screen_x / TILE);
+	(*game)->biome_y = ((*(*map)->spawn)->y / ((*game)->screen_y / TILE));
+	(*game)->biome_y *= ((*game)->screen_y / TILE);
 	(*game)->moves = 0;
 	(*game)->direction = 1;
 	(*game)->boom = 0;

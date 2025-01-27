@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_define_bonus.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:42:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/27 05:29:11 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:53:09 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_DEFINE_H
-# define SO_LONG_DEFINE_H
+#ifndef SO_LONG_DEFINE_BONUS_H
+# define SO_LONG_DEFINE_BONUS_H
 
 // Colors
 # define BLACK		"\033[0;30m"
@@ -29,8 +29,8 @@
 
 // Keycodes
 # define KEY_ESC	65307
-# define KEY_W		122
-# define KEY_A		113
+# define KEY_W		119
+# define KEY_A		97
 # define KEY_S		115
 # define KEY_D		100
 
@@ -39,7 +39,7 @@
 
 // Delay between animation frames
 # define FRAMES		30000
-# define FRAMES_FOE	50000
+# define FRAMES_FOE	35000
 
 // Assets
 	// Background

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_game_foe_manager_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:04:20 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/27 05:42:58 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:56:48 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	sl_game_place_foe(t_sl_map **map, t_sl_pos **foe)
 	int	move;
 
 	i = 0;
-	while(foe[i] != NULL)
+	while (foe[i] != NULL)
 	{
 		move = 0;
-		if ((*map)->map[foe[i]->y - 2][foe[i]->x] == '0' && move++ != 0)
-			(*map)->map[foe[i]->y - 2][foe[i]->x] = '0';
-		else if ((*map)->map[foe[i]->y + 2][foe[i]->x] == '0' && move++ != 0)
-			(*map)->map[foe[i]->y + 2][foe[i]->x] = '0';
-		else if ((*map)->map[foe[i]->y][foe[i]->x - 2] == '0' && move++ != 0)
-			(*map)->map[foe[i]->y][foe[i]->x - 2] = '0';
-		else if ((*map)->map[foe[i]->y][foe[i]->x + 2] == '0' && move++ != 0)
-			(*map)->map[foe[i]->y][foe[i]->x + 2] = '0';
+		if ((*map)->map[foe[i]->y - 1][foe[i]->x] == '0' && move++ != 0)
+			(*map)->map[foe[i]->y - 1][foe[i]->x] = '0';
+		else if ((*map)->map[foe[i]->y + 1][foe[i]->x] == '0' && move++ != 0)
+			(*map)->map[foe[i]->y + 1][foe[i]->x] = '0';
+		else if ((*map)->map[foe[i]->y][foe[i]->x - 1] == '0' && move++ != 0)
+			(*map)->map[foe[i]->y][foe[i]->x - 1] = '0';
+		else if ((*map)->map[foe[i]->y][foe[i]->x + 1] == '0' && move++ != 0)
+			(*map)->map[foe[i]->y][foe[i]->x + 1] = '0';
 		else
 			move++;
 		sl_game_update_foe_pos(foe, move, i);
@@ -41,13 +41,13 @@ void	sl_game_update_foe_pos(t_sl_pos **foe, int move, int i)
 	if (move == 5)
 		return ;
 	else if (move == 1)
-		foe[i]->y -= 2;
+		foe[i]->y -= 1;
 	else if (move == 2)
-		foe[i]->y += 2;
+		foe[i]->y += 1;
 	else if (move == 3)
-		foe[i]->x -= 2;
+		foe[i]->x -= 1;
 	else if (move == 4)
-		foe[i]->x += 2;
+		foe[i]->x += 1;
 }
 
 void	sl_game_foe_patrol(t_sl_game **game, t_sl_pos **foe, int x, int y)
@@ -61,7 +61,7 @@ void	sl_game_foe_patrol(t_sl_game **game, t_sl_pos **foe, int x, int y)
 	i = -1;
 	by = (*game)->biome_y;
 	bx = (*game)->biome_x;
-	while(foe[++i] != NULL)
+	while (foe[++i] != NULL)
 	{
 		if ((foe[i]->y > by && foe[i]->y < (y + by))
 			&& (foe[i]->x > bx && foe[i]->x < (x + bx)))
@@ -81,7 +81,7 @@ void	sl_game_foe_patrol(t_sl_game **game, t_sl_pos **foe, int x, int y)
 
 void	sl_game_foe_move(t_sl_game **game, int dx, int dy, int i)
 {
-	int pos_x;
+	int	pos_x;
 	int	pos_y;
 
 	pos_x = (*(*game)->map)->foe[i]->x;

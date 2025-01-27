@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_game_interactions_manager_bonus.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 22:24:12 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/27 05:50:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:57:26 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ void	sl_draw_large_text_bonus(t_sl_game **game, int x, int y, char *str)
 	void	*mlxp;
 	void	*winp;
 	int		i;
-	int		offset_x = 0;
-	int		offset_y = 0;
+	int		offset_x;
+	int		offset_y;
 
+	offset_x = 0;
+	offset_y = 0;
 	mlxp = (*game)->mlx_p;
 	winp = (*game)->win_p;
 	i = -1;

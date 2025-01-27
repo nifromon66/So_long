@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 20:18:08 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/27 01:28:32 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:55:49 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	sl_game_manager(t_sl_game **game)
 
 void	sl_map_manager(t_sl_map **map)
 {
-	int			i;
-	
+	int	i;
+	int	size;
+
 	i = -1;
 	if (sl_map_check_format((*map)->file) == -1)
 		sl_error_map("Error\nMap file has invalid format", map);
@@ -52,7 +53,8 @@ void	sl_map_manager(t_sl_map **map)
 		sl_error_map("Error\nCouldn't open file", map);
 	sl_map_read(map);
 	sl_map_check_manager(map);
-	(*map)->foe = (t_sl_pos **)malloc(((*map)->count_c + 1) * sizeof(t_sl_pos *));
+	size = ((*map)->count_c + 1) * sizeof(t_sl_pos *);
+	(*map)->foe = (t_sl_pos **)malloc(size);
 	if (!(*map)->foe)
 		sl_error_map("Error\nMemory allocation error", map);
 	while (++i != (*map)->count_c)

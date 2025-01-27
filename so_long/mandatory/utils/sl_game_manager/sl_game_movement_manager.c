@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_game_movement_manager.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:41:10 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/24 09:20:53 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 09:47:59 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ void	sl_game_movement_manager(int move, t_sl_game **game, t_sl_map **map)
 	if (move == 1)
 	{
 		if (sl_player_move_up(game, (*map)->map, &(*map)->count_c_game) == 0)
-			sl_error_game("Game session succesfully ended", 0, map, game);
+			sl_error_game("YOU WON", 0, map, game);
 	}
 	else if (move == 2)
 	{
 		if (sl_player_move_down(game, (*map)->map, &(*map)->count_c_game) == 0)
-			sl_error_game("Game session succesfully ended", 0, map, game);
+			sl_error_game("YOU WON", 0, map, game);
 	}
 	else if (move == 3)
 	{
 		if (sl_player_move_left(game, (*map)->map, &(*map)->count_c_game) == 0)
-			sl_error_game("Game session succesfully ended", 0, map, game);
+			sl_error_game("YOU WON", 0, map, game);
 	}
 	else if (move == 4)
 	{
 		if (sl_player_move_right(game, (*map)->map, &(*map)->count_c_game) == 0)
-			sl_error_game("Game session succesfully ended", 0, map, game);
+			sl_error_game("YOU WON", 0, map, game);
 	}
 }
 

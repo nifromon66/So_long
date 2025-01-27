@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_map_init_manager.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:40:22 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/25 18:49:00 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:15:04 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	sl_map_init_manager(t_sl_map **map, t_sl_pos **spawn, t_sl_pos **exit)
 	*map = (t_sl_map *)malloc(sizeof(t_sl_map));
 	if (!*map)
 		sl_error_map("Error\nMemory allocation error", map);
+	(*map)->foe = NULL;
 	if (sl_map_init_map_data(map) == -1)
 		sl_error_map("Error\nMemory allocation error", map);
 	(*map)->spawn = spawn;
