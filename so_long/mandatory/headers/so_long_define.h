@@ -6,7 +6,7 @@
 /*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 05:42:41 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/24 08:31:51 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/01/25 21:51:17 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 // Keycodes
 # define KEY_ESC	65307
-# define KEY_W		119
-# define KEY_A		97
+# define KEY_W		122
+# define KEY_A		113
 # define KEY_S		115
 # define KEY_D		100
 
