@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_map_check_manager.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nifromon <nifromon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nifromon <nifromon@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 08:40:33 by nifromon          #+#    #+#             */
-/*   Updated: 2025/01/24 09:06:18 by nifromon         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:29:47 by nifromon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,19 @@ int	sl_map_check_closed(char **map, int x, int y)
 	int	i;
 	int	j;
 
-	j = -1;
-	while (++j != y)
+	j = 0;
+	while (j != y)
 	{
-		i = -1;
-		while (++i != x)
+		i = 0;
+		while (i != x)
 		{
-			if ((j == 0 || j == y) && map[j][i] != '1')
+			if ((j == 0 || j == (y - 1)) && map[j][i] != '1')
 				return (-1);
-			if ((i == 0 || i == x) && map[j][i] != '1')
+			if ((i == 0 || i == (x - 1)) && map[j][i] != '1')
 				return (-1);
+			i++;
 		}
+		j++;
 	}
 	return (0);
 }
